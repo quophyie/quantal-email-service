@@ -1,17 +1,38 @@
 {
   "name": "node-microservice-template",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=6.0.0 "
+  },
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node index",
+    "migrations": "db-migrate up",
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha test/**/*tests.js  "
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.1",
+    "create-error": "^0.3.1",
+    "db-migrate": "^0.9.25",
     "debug": "~2.6.0",
-    "express": "~4.14.1",
-    "jade": "~1.11.0",
+    "express": "^4.13.4",
+    "lodash": "^4.17.4",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.2"
+    "pg": "^5.1.0",
+    "sequelize": "^3.23.3",
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {
+    "code": "^4.0.0",
+    "http-status": "^1.0.1",
+    "mocha": "^3.2.0",
+    "moment": "^2.17.1",
+    "sinon": "^1.17.7",
+    "sinon-stub-promise": "^4.0.0",
+    "supertest": "^3.0.0",
+    "supertest-promised": "^1.0.0"
   }
 }
