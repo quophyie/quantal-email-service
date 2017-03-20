@@ -14,18 +14,18 @@ Run the microservice using a command like **`NODE_ENV=<NODE ENVIRONMENT> DB_TYPE
 for example **`NODE_ENV=development DB_TYPE=postgresql DB_NAME=my_db DB_USER=postgres DB_PASSWORD=postgres DB_HOST=localhost npm start`**
 
 ##### Command line Properties
- `NODE_ENV` - The environment e.g. **`development`**,  **`staging`**,  **`production`**,  **`test`**
+ - **`NODE_ENV`** - The environment e.g. **`development`**,  **`staging`**,  **`production`**,  **`test`**
 
- `DB_TYPE` - The database type \ dialect i.e.  **`postgresql`**,  **`mysql`**,  **`mariasql`**,  **`sqlite`**.
+ - **`DB_TYPE`** - The database type \ dialect i.e.  **`postgresql`**,  **`mysql`**,  **`mariasql`**,  **`sqlite`**.
      See [Bookshelf JS Installation](http://bookshelfjs.org/#installation "BookShelfJS Installation")
  
- `DB_NAME` - The database name  e.g. **`my_db`**
+ - **`DB_NAME`** - The database name  e.g. **`my_db`**
  
- `DB_USER` - The database username  e.g. **`postgres`**
+ - **`DB_USER`** - The database username  e.g. **`postgres`**
  
- `DB_PASSWORD` - The database username  e.g. **`postgres`**
+ - **`DB_PASSWORD`** - The database username  e.g. **`postgres`**
  
- `DB_HOST` - The database host ip or name  e.g. **`localhost`**
+ - **`DB_HOST`** - The database host ip or name  e.g. **`localhost`**
 
 #### Code
 
