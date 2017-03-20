@@ -13,7 +13,10 @@ const cors = require('cors')
 const app = express()
 const enrouten = require('express-enrouten')
 
-class StartupConfig {
+class Initializer {
+  /**
+   * Initializes and starts the microservice
+   */
   constructor () {
     this.port = Number(process.env.PORT) ? process.env.PORT : 3000
     this.app = app
@@ -38,4 +41,4 @@ class StartupConfig {
   }
 }
 
-module.exports = StartupConfig
+module.exports = Initializer

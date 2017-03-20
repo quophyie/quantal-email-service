@@ -1,5 +1,5 @@
 'use strict'
 
-const startupConfig = new (require('./app/config'))()
+const initializer = new (require('./app/initializer'))()
 
-module.exports = startupConfig.getApp()
+module.exports = initializer.getApp()
