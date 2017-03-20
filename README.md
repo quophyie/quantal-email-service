@@ -1,8 +1,7 @@
 # Node Microservice Template
 
-A microservice template that uses [sequelize](http://docs.sequelizejs.com/en/latest/ "Sequelize Homepage")
-as the ORM framework and [db-migrate](https://db-migrate.readthedocs.io/en/latest/ "db-migrate Homepage") as 
-the database migration tool
+A microservice template that uses [Bookshelf JS](http://bookshelfjs.org/ "BookShelfJS Homepage")
+as the ORM framework 
 
 #### Requirements:
 - Nodejs (at least v6)
@@ -10,13 +9,50 @@ the database migration tool
 
 #### Running:
 Install dependencies - `npm install`
-Run migrations on your postgres instance - `DATABASE_URL={YOUR_POSTGRES_DATABASE_URL} npm run migrations`
- e.g. **`DATABASE_URL=postgresql://postgres:postgres@localhost:5432/users_db node node_modules/db-migrate/bin/db-migrate up`**
-Run the application - `DATABASE_URL={YOUR_POSTGRES_DATABASE_URL} PORT={YOUR_PORT} npm start`
-e.g. **`DATABASE_URL=postgresql://postgres:postgres@localhost:5432/users_db PORT=3000 node index`**
+
+Run the microservice using a command like **`NODE_ENV=<NODE ENVIRONMENT> DB_TYPE=<DB TYPE> DB_NAME=<DB NAME> DB_USER=<DB USER> DB_PASSWORD=<DB PASSWORD> DB_HOST=<DB HOST> npm start`**
+for example **`NODE_ENV=development DB_TYPE=postgresql DB_NAME=my_db DB_USER=postgres DB_PASSWORD=postgres DB_HOST=localhost npm start`**
+
+##### Command line Properties
+ `NODE_ENV` - The environment e.g. **`development`**,  **`staging`**,  **`production`**,  **`test`**
+
+ `DB_TYPE` - The database type \ dialect i.e.  **`postgresql`**,  **`mysql`**,  **`mariasql`**,  **`sqlite`**.
+     See [Bookshelf JS Installation](http://bookshelfjs.org/#installation "BookShelfJS Installation")
+ 
+ `DB_NAME` - The database name  e.g. **`my_db`**
+ 
+ `DB_USER` - The database username  e.g. **`postgres`**
+ 
+ `DB_PASSWORD` - The database username  e.g. **`postgres`**
+ 
+ `DB_HOST` - The database host ip or name  e.g. **`localhost`**
+
+#### Code
+
+##### Repositories
+Bookshelf repository classes that extend **`quantal-nodejs-bookshelf-base-repository`** must call the 
+constructor of **`quantal-nodejs-bookshelf-base-repository')`** and pass the
+`type` of the model that the repository should manager
+
+For example
+
+```javascript
+const BaseRepository = require('quantal-nodejs-bookshelf-base-repository')
+const GiphyModel = require('../../models/giphy')
+
+class GiphyRepository extends BaseRepository {
+  /**
+   * Repositories must call BaseRepository constructor
+   */
+  constructor () {
+    super(GiphyModel)
+  }
+}
+
+module.exports = GiphyRepository
+```
 
  NOTES:
  - You should use at least node version 6
  - The API should follow RESTful practices
- - The code style defined in the `.jscsrc` and `.jshintrc` files should be followed - this can be validated using the jscs and jshint node modules.
- - Bonus points will be given for useful abstraction
+ - The code style defined in the `.eslintrc`

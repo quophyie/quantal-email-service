@@ -3,31 +3,29 @@
 module.exports = {
 
   development: {
-    /*client: 'sqlite3',
+    client: (process.env.DB_TYPE ? process.env.DB_TYPE : 'postgresql'),
     connection: {
-      filename: './dev.sqlite3'
-    }*/
-     client: 'postgresql',
-     connection: {
-         database: 'postgres',
-         user:     'postgres',
-         password: 'postgres'
-     },
-     pool: {
-         min: 2,
-         max: 10
-     },
+      database: (process.env.DB_NAME ? process.env.DB_NAME : 'postgres'),
+      user: (process.env.DB_USER ? process.env.DB_USER : 'postgres'),
+      password: (process.env.DB_PASSWORD ? process.env.DB_PASSWORD : 'postgres'),
+      host: (process.env.DB_HOST ? process.env.DB_HOST : 'localhost')
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
     migrations: {
-        tableName: 'knex_migrations'
+      tableName: 'knex_migrations'
     }
   },
 
   staging: {
-    client: 'postgresql',
+    client: (process.env.DB_TYPE ? process.env.DB_TYPE : 'postgresql'),
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      host: process.env.DB_HOST
     },
     pool: {
       min: 2,
@@ -39,11 +37,12 @@ module.exports = {
   },
 
   production: {
-    client: 'postgresql',
+    client: (process.env.DB_TYPE ? process.env.DB_TYPE : 'postgresql'),
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      host: process.env.DB_HOST
     },
     pool: {
       min: 2,
@@ -54,4 +53,4 @@ module.exports = {
     }
   }
 
-};
+}
