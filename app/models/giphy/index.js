@@ -1,9 +1,9 @@
 'use strict'
 const bookshelf = require('./../../db')
 const ModelBase = require('bookshelf-modelbase')(bookshelf)
-const Joi = require('joi')
+const Joi = require('joi') //eslint-disable-line
 
-/**class Giphy extends ModelBase {
+ /** class Giphy extends ModelBase {
   get tableName () {
     return 'giphys'
   }
@@ -19,16 +19,16 @@ const Joi = require('joi')
       firstName: Joi.string()
     }
   } * /
-}*/
+} */
 
- const Giphy = ModelBase.extend({
-   tableName: 'giphys',
-   idAttribute: 'giphy_id',
+const Giphy = ModelBase.extend({
+  tableName: 'giphys',
+  idAttribute: 'giphy_id'
 
   // validation is passed to Joi.object(), so use a raw object
-  /*validate: {
+  /* validate: {
    firstName: Joi.string()
-   }*/
- })
+   } */
+})
 
 module.exports = bookshelf.model('Giphy', Giphy)
