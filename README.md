@@ -10,8 +10,13 @@ as the ORM framework
 #### Running:
 Install dependencies - `npm install`
 
-Run the microservice using a command like **`NODE_ENV=<NODE ENVIRONMENT> DB_TYPE=<DB TYPE> DB_NAME=<DB NAME> DB_USER=<DB USER> DB_PASSWORD=<DB PASSWORD> DB_HOST=<DB HOST> npm start`**
-for example **`NODE_ENV=development DB_TYPE=postgresql DB_NAME=my_db DB_USER=postgres DB_PASSWORD=postgres DB_HOST=localhost npm start`**
+Run the microservice using a command like
+
+**`NODE_ENV=<NODE ENVIRONMENT> DB_TYPE=<DB TYPE> DB_NAME=<DB NAME> DB_USER=<DB USER> DB_PASSWORD=<DB PASSWORD> DB_HOST=<DB HOST> npm start`**
+
+for example 
+
+**`NODE_ENV=development DB_TYPE=postgresql DB_NAME=my_db DB_USER=postgres DB_PASSWORD=postgres DB_HOST=localhost npm start`**
 
 ##### Command line Properties
  - **`NODE_ENV`** - The environment e.g. **`development`**,  **`staging`**,  **`production`**,  **`test`**
