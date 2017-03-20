@@ -21,7 +21,6 @@ class GiphyService {
   findOrCreate (data) {
     return this.giphyRepository
       .findOne(data)
-      .then(res => res)
       .catch((err) => {
         if (err) {}
         const urlEncodedQuery = urlencode(data.query)
