@@ -1,33 +1,13 @@
 'use strict'
 const bookshelf = require('./../../db')
-const ModelBase = require('bookshelf-modelbase')(bookshelf)
-const Joi = require('joi') //eslint-disable-line
+const BaseModel = require('quantal-base-model')(bookshelf)
 
- /** class Giphy extends ModelBase {
-  get tableName () {
-    return 'giphys'
-  }
-
-  get idAttribute () {
-    return 'giphy_id'
-  }
-
-  // validation is passed to Joi.object(), so use a raw object
-  // Uncoment to apply validation on
-  /* validate () {
-    return {
-      firstName: Joi.string()
-    }
-  } * /
-} */
-
-const Giphy = ModelBase.extend({
+const Giphy = BaseModel.extend({
   tableName: 'giphys',
   idAttribute: 'giphy_id'
-
   // validation is passed to Joi.object(), so use a raw object
   /* validate: {
-   firstName: Joi.string()
+    query: Joi.string()
    } */
 })
 
