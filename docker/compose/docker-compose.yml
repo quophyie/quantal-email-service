@@ -1,0 +1,56 @@
+version: '2'
+networks:
+  default:
+    external:
+      name: compose_container_services_networks
+services:
+
+  node_micrososervice:
+    build:
+      context: ./../../
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "8080:8080"
+      - "5015:5015"
+    environment:
+      - DB_HOST=auth_db
+      - DB_PORT=5432
+      - JWT_SECRET=${JWT_SECRET}
+      - PASSWORD_SALT=${PASSWORD_SALT}
+      - JWT_TYPE=${JWT_TYPE}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - API_GATEWAY_ENDPOINT=${API_GATEWAY_ENDPOINT}
+    links:
+      - node_micrososervice_db
+    depends_on:
+      - node_micrososervice_db
+    command: ["/wait-for-it.sh", "postgres_quantal_users:5432", "--", "java",  "-jar", "/opt/app/quantalex-users-0.0.1-SNAPSHOT.jar"]
+    volumes:
+      - /private/var/docker/log/node_micrososervice_db:/var/log
+
+    #networks:
+     # - container_services_networks
+
+  # The postgres database
+  node_micrososervice_db:
+    restart: always
+    image: sameersbn/postgresql:9.6-2
+    ports:
+      - "5434:5432"
+    environment:
+      - DEBUG=false
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=node_micrososervice_db
+      - PG_PASSWORD=postgres
+      - DB_TEMPLATE=
+
+      - DB_EXTENSION=
+
+      - REPLICATION_MODE=
+      - REPLICATION_USER=
+      - REPLICATION_PASS=
+      - REPLICATION_SSLMODE=
+
+    volumes:
+      - /private/var/docker/postgresql/node_micrososervice_db:/var/lib/postgresql
