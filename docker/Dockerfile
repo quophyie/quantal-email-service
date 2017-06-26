@@ -1,10 +1,21 @@
 FROM node:8.1.2
 # RUN mvn org.apache.maven.plugins:maven-dependency-plugin:2.6:get -Dartifact=org.springframework.boot:spring-boot-maven-plugin:LATEST
 # RUN mkdir /opt/app
-RUN mkdir -p /opt/app
-ADD lib /opt/app
+RUN mkdir -p /opt/app/app
+RUN mkdir -p /opt/app/test
+RUN mkdir -p /opt/app/migrations
+ADD app/ /opt/app/app
+ADD test/ /opt/app/test/
+ADD migrations/ /opt/app/migrations/
+ADD index.js /opt/app
+ADD knexfile.js /opt/app
+ADD package.json /opt/app
+ADD package-lock.json /opt/app
+ADD README.md /opt/app
+
+RUN cd /opt/app && npm i
+
 ADD docker/wait-for-it.sh /wait-for-it.sh
 RUN chmod 777 /wait-for-it.sh
-CMD ["java", "-jar", "/opt/app/quantalex-users-0.0.1-SNAPSHOT.jar"]
-# CMD ["echo", "$DB_HOST"]
-# EXPOSE 8080
+
+CMD ["/bin/bash","-c", "npm --prefix /opt/app/ start"]

@@ -10,10 +10,10 @@ services:
       context: ./../../
       dockerfile: ./docker/Dockerfile
     ports:
-      - "8080:8080"
+      - "4000:3000"
       - "5015:5015"
     environment:
-      - DB_HOST=auth_db
+      - DB_HOST=node_micrososervice_db
       - DB_PORT=5432
       - JWT_SECRET=${JWT_SECRET}
       - PASSWORD_SALT=${PASSWORD_SALT}
@@ -24,7 +24,7 @@ services:
       - node_micrososervice_db
     depends_on:
       - node_micrososervice_db
-    command: ["/wait-for-it.sh", "postgres_quantal_users:5432", "--", "java",  "-jar", "/opt/app/quantalex-users-0.0.1-SNAPSHOT.jar"]
+    command: ["/wait-for-it.sh", "quantal_auth_db:5432", "--","npm","--prefix", "/opt/app/", "start"]
     volumes:
       - /private/var/docker/log/node_micrososervice_db:/var/log
 
@@ -36,7 +36,7 @@ services:
     restart: always
     image: sameersbn/postgresql:9.6-2
     ports:
-      - "5434:5432"
+      - "5435:5432"
     environment:
       - DEBUG=false
       - DB_USER=postgres
