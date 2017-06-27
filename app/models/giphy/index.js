@@ -1,6 +1,7 @@
 'use strict'
 const bookshelf = require('./../../db')
 const ModelBase = require('bookshelf-modelbase')(bookshelf)
+// const BaseModel = require('quantal-base-model')(bookshelf)
 const Joi = require('joi') //eslint-disable-line
 
  /** class Giphy extends ModelBase {
@@ -21,6 +22,7 @@ const Joi = require('joi') //eslint-disable-line
   } * /
 } */
 
+// const Giphy = BaseModel.extend({
 const Giphy = ModelBase.extend({
   tableName: 'giphys',
   idAttribute: 'giphy_id'

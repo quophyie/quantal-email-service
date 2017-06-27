@@ -29,9 +29,8 @@
     "morgan": "~1.7.0",
     "pg": "^6.1.4",
     "quant-beat": "^0.0.7",
-    "quantal-base-model": "^0.0.3",
     "quantal-errors": "^0.0.5",
-    "quantal-nodejs-bookshelf-base-repository": "^0.0.2",
+    "qute-bookshelf-repository": "^0.0.1",
     "urlencode": "^1.1.0"
   },
   "devDependencies": {

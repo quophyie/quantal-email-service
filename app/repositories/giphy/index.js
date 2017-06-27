@@ -1,4 +1,4 @@
-const BaseRepository = require('quantal-nodejs-bookshelf-base-repository')
+const BaseRepository = require('qute-bookshelf-repository')
 const GiphyModel = require('../../models/giphy')
 
 class GiphyRepository extends BaseRepository {
