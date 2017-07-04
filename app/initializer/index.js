@@ -34,6 +34,16 @@ class Initializer {
     this.app.listen(this.port, () => logger.getMdc().run(() => logger.info(`Listening on port ${this.port}`)))
     // will map custom errors to boom errors
     // This should be the last middleware in the chain
+    /**
+     * For example
+     *
+     * AppErrors = {
+     *   MyCustomError: createError('MyCustomError')
+     * }
+     * errorMappings = {
+     *   badRequest: ['MyCustomError']
+     * }
+     */
     this.app.use(errorrMiddleware(AppErrors, errorMappings))
   }
 
