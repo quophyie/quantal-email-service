@@ -16,7 +16,7 @@ const logger = require('../logger').logger
 const loggerExpress = require('../logger').loggerExpress
 const errorrMiddleware = require('quantal-errors').expressErrorMiddleware
 const AppErrors = require('../exceptions')
-const mappings = []
+const errorMappings = []
 
 class Initializer {
   /**
@@ -32,8 +32,9 @@ class Initializer {
     this.app.use(cookieParser())
     this.app.use(enrouten({ directory: './../controllers' }))
     this.app.listen(this.port, () => logger.getMdc().run(() => logger.info(`Listening on port ${this.port}`)))
-    // Custom errors and error mappings
-    this.app.use(errorrMiddleware(AppErrors, mappings))
+    // will map custom errors to boom errors
+    // This should be the last middleware in the chain
+    this.app.use(errorrMiddleware(AppErrors, errorMappings))
   }
 
   getApp () {
