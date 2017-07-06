@@ -2095,9 +2095,9 @@ quantal-errors@0.0.6:
     lodash "^4.13.0"
     request-promise "^4.2.0"
 
-quantal-errors@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/quantal-errors/-/quantal-errors-0.0.10.tgz#96dde403bfad25704cadbd5905d72793f2dfba25"
+quantal-errors@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/quantal-errors/-/quantal-errors-0.0.12.tgz#3ab4d7d40d7f326e105ce4f6b0860d1ce3864b3b"
   dependencies:
     boom "^3.2.1"
     create-error "^0.3.1"

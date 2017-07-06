@@ -29,7 +29,7 @@
     "morgan": "~1.7.0",
     "pg": "^6.1.4",
     "quant-beat": "^0.0.7",
-    "quantal-errors": "^0.0.10",
+    "quantal-errors": "^0.0.12",
     "qute-bookshelf-repository": "^0.0.1",
     "urlencode": "^1.1.0"
   },
