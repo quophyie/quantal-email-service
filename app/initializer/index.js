@@ -14,7 +14,7 @@ const app = express()
 const enrouten = require('express-enrouten')
 const logger = require('../logger').logger
 const loggerExpress = require('../logger').loggerExpress
-const errorrMiddleware = require('quantal-errors').expressErrorMiddleware
+const errorMiddleware = require('quantal-errors').expressErrorMiddleware
 const AppErrors = require('../exceptions')
 const errorMappings = []
 
@@ -44,7 +44,7 @@ class Initializer {
      *   badRequest: ['MyCustomError']
      * }
      */
-    this.app.use(errorrMiddleware(AppErrors, errorMappings))
+    this.app.use(errorMiddleware(AppErrors, errorMappings))
   }
 
   getApp () {
