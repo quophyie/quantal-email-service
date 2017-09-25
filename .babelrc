@@ -1,4 +1,13 @@
 {
-  "presets": ["env"],
-  "plugins": ["transform-decorators"]
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
 }

@@ -7,7 +7,9 @@ const CommonExceptions = require('quantal-errors')
 const GIPHY_ROOT_URL = require('../../enums').GIPHY_ROOT_URL
 const GIPHY_API_KEY = require('../../enums').GIPHY_API_KEY
 const CommonErrors = require('quantal-errors')
+const Wove = require('aspect.js').Wove()
 
+@Wove
 class GiphyService {
   constructor () {
     this.giphyRepository = new GiphyRepository()

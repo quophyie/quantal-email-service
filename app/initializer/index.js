@@ -10,6 +10,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+require('../aspects')
 const app = express()
 const enrouten = require('express-enrouten')
 const logger = require('../logger').logger
