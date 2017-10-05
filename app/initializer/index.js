@@ -20,7 +20,7 @@ const LoggerAspect = require('quantal-nodejs-shared').aspects.LoggerAspect
 new LoggerAspect(logger)
 const AppAspect = require('../aspects').Aspects
 new AppAspect()
-const Events = require('quantal-nodejs-shared').events
+const Events = require('../events')
 
 const errorMiddleware = require('quantal-errors').expressErrorMiddleware
 const AppErrors = require('../exceptions')
