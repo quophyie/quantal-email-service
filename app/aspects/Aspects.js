@@ -11,9 +11,9 @@ class Aspects {
   })
   invokeBeforeMethod (meta) {
     if (!meta) {
-      console.log(`Inside of the logger. Called ${meta.className}.${meta.method.name} with args: ${meta.method.args.join(', ')}.`)
+      console.log(`Inside of the GiphyService class. Called ${meta.className}.${meta.method.name} with args: ${meta.method.args.join(', ')}.`)
     } else {
-      console.log(`Inside of the logger. Called blah.`)
+      console.log(`Inside of the GiphyService class. Called blah.`)
     }
   }
 }

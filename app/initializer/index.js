@@ -10,15 +10,21 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-require('../aspects')
 const app = express()
 const enrouten = require('express-enrouten')
+
 const logger = require('../logger').logger
 const loggerExpress = require('../logger').loggerExpress
+
+const LoggerAspect = require('quantal-nodejs-shared').aspects.LoggerAspect
+new LoggerAspect(logger)
+const AppAspect = require('../aspects').Aspects
+new AppAspect()
+const Events = require('quantal-nodejs-shared').events
+
 const errorMiddleware = require('quantal-errors').expressErrorMiddleware
 const AppErrors = require('../exceptions')
-const errorMappings = []
-
+const errorMappings = {}
 class Initializer {
   /**
    * Initializes and starts the microservice
@@ -32,7 +38,7 @@ class Initializer {
     this.app.use(bodyParser.urlencoded({ extended: false }))
     this.app.use(cookieParser())
     this.app.use(enrouten({ directory: './../controllers' }))
-    this.app.listen(this.port, () => logger.getMdc().run(() => logger.info(`Listening on port ${this.port}`)))
+    this.app.listen(this.port, () => logger.getMdc().run(() => logger.info(Events.SERVICE_START, `Listening on port %s`, this.port)))
     // will map custom errors to boom errors
     // This should be the last middleware in the chain
     /**
