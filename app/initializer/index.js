@@ -16,11 +16,11 @@ const enrouten = require('express-enrouten')
 const logger = require('../logger').logger
 const loggerExpress = require('../logger').loggerExpress
 
+const Events = require('../events')
 const LoggerAspect = require('quantal-nodejs-shared').aspects.LoggerAspect
-new LoggerAspect(logger)
+new LoggerAspect(logger, Events)
 const AppAspect = require('../aspects').Aspects
 new AppAspect()
-const Events = require('../events')
 
 const errorMiddleware = require('quantal-errors').expressErrorMiddleware
 const mdcPopulatorMiddleware = require('quantal-nodejs-shared').middleware.MdcPopulator
