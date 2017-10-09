@@ -34,7 +34,7 @@
     "pg": "^6.1.4",
     "quant-beat": "0.0.17",
     "quantal-errors": "^0.0.12",
-    "quantal-nodejs-shared": "0.0.34",
+    "quantal-nodejs-shared": "0.0.38",
     "qute-bookshelf-repository": "^0.0.1",
     "urlencode": "^1.1.0"
   },
