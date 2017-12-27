@@ -32,7 +32,7 @@
     "lodash": "^4.17.4",
     "morgan": "~1.7.0",
     "pg": "^6.1.4",
-    "quant-beat": "0.0.17",
+    "quant-beat": "0.0.18",
     "quantal-errors": "^0.0.12",
     "quantal-nodejs-shared": "0.0.38",
     "qute-bookshelf-repository": "^0.0.1",
