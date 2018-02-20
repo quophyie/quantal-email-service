@@ -5,43 +5,46 @@ networks:
       name: compose_container_services_networks
 services:
 
-  node_micrososervice:
+  quantal_email_service:
     build:
       context: ./../../
       dockerfile: ./docker/Dockerfile
     ports:
-      - "4000:3000"
+      - "9100:3000"
       - "5015:5015"
     environment:
-      - DB_HOST=node_micrososervice_db
+      - DB_HOST=quantal_email_service_db
+      - DB_NAME=quantal_email_service_db
       - DB_PORT=5432
+      - MAILGUN_API_KEY=${MAILGUN_API_KEY}
+      - LOGZIO_TOKEN=${LOGZIO_TOKEN}
       - JWT_SECRET=${JWT_SECRET}
       - PASSWORD_SALT=${PASSWORD_SALT}
       - JWT_TYPE=${JWT_TYPE}
       - JWT_ALGORITHM=${JWT_ALGORITHM}
       - API_GATEWAY_ENDPOINT=${API_GATEWAY_ENDPOINT}
     links:
-      - node_micrososervice_db
+      - quantal_email_service_db
     depends_on:
-      - node_micrososervice_db
-    command: ["/wait-for-it.sh", "quantal_auth_db:5432", "--","npm","--prefix", "/opt/app/", "start"]
+      - quantal_email_service_db
+    command: ["/wait-for-it.sh", "quantal_email_service_db:5432", "--","npm","--prefix", "/opt/app/", "start"]
     volumes:
-      - /private/var/docker/log/node_micrososervice_db:/var/log
+      - /private/var/docker/log/quantal_email_service:/var/log
 
     #networks:
      # - container_services_networks
 
   # The postgres database
-  node_micrososervice_db:
+  quantal_email_service_db:
     restart: always
     image: sameersbn/postgresql:9.6-2
     ports:
-      - "5435:5432"
+      - "5437:5432"
     environment:
       - DEBUG=false
       - DB_USER=postgres
       - DB_PASS=postgres
-      - DB_NAME=node_micrososervice_db
+      - DB_NAME=quantal_email_service_db
       - PG_PASSWORD=postgres
       - DB_TEMPLATE=
 
@@ -53,4 +56,4 @@ services:
       - REPLICATION_SSLMODE=
 
     volumes:
-      - /private/var/docker/postgresql/node_micrososervice_db:/var/lib/postgresql
+      - /private/var/docker/postgresql/quantal_email_service_db:/var/lib/postgresql

@@ -35,6 +35,8 @@ for example
  - **`API_GATEWAY_ENDPOINT`** - The endpoint for the API Gateway e.g. [http://localhost:8001](http://localhost:8001)
  
  - **`LOGZIO_TOKEN`** - The [Logz.io](http://logz.io) token to use to send logs to [Logz.io](http://logz.io) 
+ 
+ - **`MAILGUN_API_KEY`** - The [Mailgun](https://www.mailgun.com) api key
 
 #### Code
 
