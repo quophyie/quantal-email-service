@@ -55,7 +55,7 @@ class Initializer {
      *   badRequest: ['MyCustomError']
      * }
      */
-    this.app.use(errorMiddleware(AppErrors, errorMappings))
+    this.app.use(errorMiddleware(AppErrors, errorMappings, logger))
   }
 
   getApp () {
