@@ -37,6 +37,8 @@ for example
  - **`LOGZIO_TOKEN`** - The [Logz.io](http://logz.io) token to use to send logs to [Logz.io](http://logz.io) 
  
  - **`MAILGUN_API_KEY`** - The [Mailgun](https://www.mailgun.com) api key
+ 
+ - **`USE_MAILGUN_IN_TEST_MODE`** - if set to `true`, then mailgun will be in dev mode and all emails will be sent to the test mailgun email account
 
 #### Code
 

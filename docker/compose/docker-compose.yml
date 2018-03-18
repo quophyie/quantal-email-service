@@ -23,6 +23,7 @@ services:
       - JWT_TYPE=${JWT_TYPE}
       - JWT_ALGORITHM=${JWT_ALGORITHM}
       - API_GATEWAY_ENDPOINT=${API_GATEWAY_ENDPOINT}
+      - USE_MAILGUN_IN_TEST_MODE=true
     links:
       - quantal_email_service_db
     depends_on:

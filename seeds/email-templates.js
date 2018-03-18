@@ -5,7 +5,8 @@ exports.seed = (knex, Promise) => {
     .then(() => {
       // Inserts seed entries
       return knex('template_info').insert([
-        {name: 'new_user', from: 'admin@quantallhs.com', subject: 'Welcome to Quantal LHS'}
+        {name: 'new_user', from: 'admin@quantallhs.com', subject: 'Welcome to Quantal LHS'},
+        {name: 'password_reset', from: 'admin@quantallhs.com', subject: 'Password Reset Request Email'}
       ])
     })
 }

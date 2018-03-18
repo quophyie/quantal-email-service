@@ -41,7 +41,7 @@ class Initializer {
     this.app.use(loggerExpress(logger, { setSpringCloudSleuthHeaders: true }))
     this.app.use(enrouten({ directory: './../controllers' }))
     this.app.listen(this.port, () => logger.getMdc().run(() => {
-      logger.info(Events.SERVICE_START, `Listening on port %s`, this.port)
+      logger.info({event: Events.SERVICE_START, traceId: Date.now()}, `Listening on port %s`, this.port)
     }))
     // will map custom errors to boom errors
     // This should be the last middleware in the chain
