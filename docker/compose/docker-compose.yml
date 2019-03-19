@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 networks:
   default:
     external:
@@ -10,8 +10,7 @@ services:
       context: ./../../
       dockerfile: ./docker/Dockerfile
     ports:
-      - "9100:3000"
-      - "5015:5015"
+      - ${WEB_APP_PORT:-9100}:3000
     environment:
       - DB_HOST=quantal_email_service_db
       - DB_NAME=quantal_email_service_db
@@ -24,6 +23,7 @@ services:
       - JWT_ALGORITHM=${JWT_ALGORITHM}
       - API_GATEWAY_ENDPOINT=${API_GATEWAY_ENDPOINT}
       - USE_MAILGUN_IN_TEST_MODE=true
+      - NODE_ENV
     links:
       - quantal_email_service_db
     depends_on:
@@ -32,15 +32,12 @@ services:
     volumes:
       - /private/var/docker/log/quantal_email_service:/var/log
 
-    #networks:
-     # - container_services_networks
-
   # The postgres database
   quantal_email_service_db:
     restart: always
     image: sameersbn/postgresql:9.6-2
     ports:
-      - "5437:5432"
+      - ${DB_PORT_EXPOSED_ON_HOST:-5437}:5432
     environment:
       - DEBUG=false
       - DB_USER=postgres
