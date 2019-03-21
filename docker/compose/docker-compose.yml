@@ -28,7 +28,7 @@ services:
       - quantal_email_service_db
     depends_on:
       - quantal_email_service_db
-    command: ["/wait-for-it.sh", "quantal_email_service_db:5432", "--","npm","--prefix", "/opt/app/", "start"]
+    command: ["/wait-for-it.sh", "-t", "30", "quantal_email_service_db:5432", "--","npm","--prefix", "/opt/app/", "start"]
     volumes:
       - /private/var/docker/log/quantal_email_service:/var/log
 
