@@ -7,6 +7,9 @@ const Exceptions = require('../../app/exceptions')
 const sinon = require('sinon')
 const sinonStubPromise = require('sinon-stub-promise')
 //const Initalizer = new require('../../app/initializer')()
+
+const Initializer = require('../../app/initializer')
+
 sinonStubPromise(sinon)
 let emailRepo = null
 let emailRepoFindWhereStub
@@ -17,6 +20,7 @@ const templateDbInfo = {
 }
 describe('Email Repository Tests', () => {
   beforeEach(() => {
+    Initializer.getLoggerAspect().disable()
     emailRepo = new EmailRepository()
     emailRepoFindWhereStub = sinon.stub(emailRepo, 'findWhere').returnsPromise().resolves(templateDbInfo)
   })

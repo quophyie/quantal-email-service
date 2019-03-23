@@ -18,7 +18,7 @@ const loggerExpress = require('../logger').loggerExpress
 
 const Events = require('../events')
 const LoggerAspect = require('quantal-nodejs-shared').aspects.LoggerAspect
-new LoggerAspect(logger, Events)
+const loggerAspectInstance = new LoggerAspect(logger, Events)
 const AppAspect = require('../aspects').Aspects
 new AppAspect()
 
@@ -68,6 +68,10 @@ class Initializer {
 
   getRouter () {
     return this.router
+  }
+
+  static getLoggerAspect () {
+    return loggerAspectInstance
   }
 }
 

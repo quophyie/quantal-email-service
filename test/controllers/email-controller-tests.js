@@ -5,11 +5,19 @@ const sinon = require('sinon')
 const sinonStubPromise = require('sinon-stub-promise')
 sinonStubPromise(sinon)
 const EmailService = require('../../app/services/email')
-const controller = (new (require('../../app/initializer'))())
+const Initializer = require('../../app/initializer')
+const controller = new Initializer()
 const supertest = require('supertest-promised')(controller.getApp())
 let emailServiceStub
 
 describe('Email Controller Tests', () => {
+  beforeEach(() => {
+   // Initializer.getLoggerAspect().disable()
+    Initializer.getLoggerAspect().enable()
+
+    Initializer.getLoggerAspect().setRequireTraceId(false)
+    Initializer.getLoggerAspect().setRequireEvent(false)
+  })
   afterEach(() => {
     emailServiceStub.restore()
   })

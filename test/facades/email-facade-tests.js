@@ -7,10 +7,12 @@ const sinonStubPromise = require('sinon-stub-promise')
 sinonStubPromise(sinon)
 const emailFacade = require('../../app/facades/email')
 const EmailService = require('../../app/services/email')
+const Initializer = require('../../app/initializer')
 let serviceStub
 
 describe('Email Facade Tests', () => {
   beforeEach(() => {
+    Initializer.getLoggerAspect().disable()
   })
 
   afterEach(() => {

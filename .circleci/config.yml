@@ -1,0 +1,49 @@
+version: 2
+jobs:
+  build:
+
+    working_directory: ~/quantal-email-service
+
+    docker:
+      - image: webpackcontrib/circleci-node8
+
+    steps:
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - quantal-email-service-v1-dependencies-{{ checksum "package.json" }}
+               # fallback to using the latest cache if no exact match is found
+            - quantal-email-service-v1-
+
+      - run: npm install
+
+      - run: mkdir -p test_report
+      - run: mkdir -p build
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: quantal-email-service-v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          command: npm run build
+
+      - run:
+          command: npm run test
+          environment:
+            LOGZIO_TOKEN: logzio_token
+            JWT_SECRET: jwtsecret123
+
+
+      - store_test_results:
+          path: test_report
+
+      - store_artifacts:
+          path: build
+workflows:
+  version: 2
+  build_test_and_deploy_project:
+    jobs:
+      - build

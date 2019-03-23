@@ -8,12 +8,14 @@ const Exceptions = require('../../../app/exceptions')
 const sinon = require('sinon')
 const sinonStubPromise = require('sinon-stub-promise')
 const mailgun = require('mailgun-js')({apiKey: 'key-test', domain: 'www.quantalinc.com'})
+const Initializer = require('../../../app/initializer')
 sinonStubPromise(sinon)
 let emailService, emailRepo
 let messagesStub, mailgunSendStub, emailRepoStub
 
 describe('Email Service Test', () => {
   beforeEach(() => {
+    Initializer.getLoggerAspect().disable()
     emailRepo = new EmailRepository()
     emailService = new EmailService(emailRepo, mailgun, 'TOKEN', 'www.domain.com')
     messagesStub = sinon.stub()

@@ -10,7 +10,9 @@ const appRoot = require('app-root-path')
 const TEMPLATES_DIR_PATH = '/app/templates/email'
 const logger = require('../../logger').logger
 const Events = require('../../events')
+const Wove = require('aspect.js').Wove()
 
+@Wove
 class EmailRepository extends BaseRepository {
   constructor () {
     super(TemplateInfo)
