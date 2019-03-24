@@ -25,7 +25,7 @@ class EmailRepository extends BaseRepository {
     logger.info({subEvent: Events.EMAIL_TEMPLATE_RETRIEVE, templateName: template}, `retrieving template with name ${template} via repositoty`)
     return this.findWhere({name: template})
           .then(tplInfoDb => {
-            templateInfo = tplInfoDb[0]
+            templateInfo = tplInfoDb
             return templateInfo
           })
           .then(tplInfo => readFileAsync(filepath, {encoding: 'utf8'}))
