@@ -39,9 +39,9 @@
     "mailgun-js": "^0.14.2",
     "morgan": "^1.7.0",
     "pg": "^6.4.2",
-    "quant-beat": "0.0.28",
+    "quant-beat": "0.0.29",
     "quantal-errors": "0.0.14",
-    "quantal-nodejs-shared": "0.0.57",
+    "quantal-nodejs-shared": "0.0.58",
     "qute-bookshelf-repository": "0.0.2",
     "urlencode": "^1.1.0"
   },
