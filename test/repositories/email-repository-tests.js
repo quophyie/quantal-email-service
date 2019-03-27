@@ -22,7 +22,7 @@ describe('Email Repository Tests', () => {
   beforeEach(() => {
     Initializer.getLoggerAspect().disable()
     emailRepo = new EmailRepository()
-    emailRepoFindWhereStub = sinon.stub(emailRepo, 'findWhere').returnsPromise().resolves(templateDbInfo)
+    emailRepoFindWhereStub = sinon.stub(emailRepo, 'findWhere').returnsPromise().resolves([templateDbInfo])
   })
 
   afterEach(() => {
