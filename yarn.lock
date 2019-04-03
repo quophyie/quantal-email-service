@@ -54,6 +54,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@types/debug@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.29.tgz#a1e514adfbd92f03a224ba54d693111dbf1f3754"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -182,6 +186,10 @@ arr-flatten@^1.0.1:
 array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
+
+array-flatten@^2.1.0:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
 
 array-union@^1.0.1:
   version "1.0.2"
@@ -1145,6 +1153,14 @@ component-emitter@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
+compose-middleware@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/compose-middleware/-/compose-middleware-4.0.0.tgz#1e7298257cd9c841485f3ca1de385d3e7da0dd0f"
+  dependencies:
+    "@types/debug" "0.0.29"
+    array-flatten "^2.1.0"
+    debug "^3.1.0"
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -1770,6 +1786,12 @@ express-enrouten@^1.3.0:
     caller "^1.0.0"
     debuglog "^1.0.1"
     path-to-regexp "^1.1.1"
+
+express-interceptor@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/express-interceptor/-/express-interceptor-1.2.0.tgz#33460a8e11dce7e5a022caf555d377e45ddb822a"
+  dependencies:
+    debug "^2.2.0"
 
 express@^4.16.2:
   version "4.16.2"
@@ -3419,9 +3441,9 @@ qs@~6.2.0:
   version "6.2.3"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.3.tgz#1cfcb25c10a9b2b483053ff39f5dfc9233908cfe"
 
-quant-beat@0.0.18:
-  version "0.0.18"
-  resolved "https://registry.yarnpkg.com/quant-beat/-/quant-beat-0.0.18.tgz#7ed20c214e5cbca840940af37c64ce880e20739b"
+quant-beat@0.0.31:
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/quant-beat/-/quant-beat-0.0.31.tgz#80d0738634bf1cdba1b8a228abcd2bf04c3d076d"
   dependencies:
     app-root-path "^2.0.1"
     aspect.js "^0.5.1"
@@ -3430,17 +3452,18 @@ quant-beat@0.0.18:
     bunyan "^1.8.10"
     bunyan-format "^0.2.1"
     cls-bluebird "^2.0.1"
+    compose-middleware "^4.0.0"
     continuation-local-storage "^3.2.0"
     cookie-parser "~1.4.3"
     create-error "^0.3.1"
     deasync "^0.1.10"
     debug "~2.6.3"
     entry-points "^1.2.1"
+    express-interceptor "^1.2.0"
     lodash "^4.17.4"
     logzio-bunyan "^0.1.2"
     lugg "^1.1.3"
     quantal-errors "0.0.12"
-    quantal-nodejs-shared "0.0.13"
     randomstring "^1.1.5"
     serve-favicon "~2.4.2"
     uuid "^3.1.0"
@@ -3455,6 +3478,16 @@ quantal-base-model@^0.0.5:
 quantal-errors@0.0.12:
   version "0.0.12"
   resolved "https://registry.yarnpkg.com/quantal-errors/-/quantal-errors-0.0.12.tgz#3ab4d7d40d7f326e105ce4f6b0860d1ce3864b3b"
+  dependencies:
+    boom "^3.2.1"
+    create-error "^0.3.1"
+    http-status "^0.2.3"
+    lodash "^4.13.0"
+    request-promise "^4.2.0"
+
+quantal-errors@0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/quantal-errors/-/quantal-errors-0.0.14.tgz#74495f9a788f7a4bf95a414b18c1d9c5aad09a1c"
   dependencies:
     boom "^3.2.1"
     create-error "^0.3.1"
@@ -3482,28 +3515,19 @@ quantal-errors@^0.0.5:
     lodash "^4.13.0"
     request-promise "^4.2.0"
 
-quantal-nodejs-shared@0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/quantal-nodejs-shared/-/quantal-nodejs-shared-0.0.13.tgz#084d2caf03719481fba2311aecbd509fe4325781"
-  dependencies:
-    add "^2.0.6"
-    app-root-path "^2.0.1"
-    aspect.js "^0.5.1"
-    debug "^3.1.0"
-    quantal-errors "0.0.12"
-
-quantal-nodejs-shared@0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/quantal-nodejs-shared/-/quantal-nodejs-shared-0.0.39.tgz#2e27a0fae78aa1526f8bb23fe2469fcab7dfe0f9"
+quantal-nodejs-shared@0.0.66:
+  version "0.0.66"
+  resolved "https://registry.yarnpkg.com/quantal-nodejs-shared/-/quantal-nodejs-shared-0.0.66.tgz#52644232df9c04d9bfe399691de1f351e7c3215c"
   dependencies:
     add "^2.0.6"
     app-root-path "^2.0.1"
     aspect.js "^0.5.1"
     create-error "^0.3.1"
     debug "^3.1.0"
+    lodash "^4.17.4"
     quantal-errors "0.0.12"
 
-qute-bookshelf-repository@^0.0.2:
+qute-bookshelf-repository@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/qute-bookshelf-repository/-/qute-bookshelf-repository-0.0.2.tgz#01291aa7d3933df4bf7b1b5a39feacb1eee21bf8"
   dependencies:

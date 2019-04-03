@@ -1,7 +1,7 @@
 'use strict'
 const celebrate = require('celebrate').celebrate
 const Joi = require('celebrate').Joi
-const emailFacade = require('../../facades/email')
+const emailFacade = require('../../../facades/email/index')
 const templateSchema = {
   body: {
     to: Joi.alternatives().try(Joi.string().email(), Joi.array().items(Joi.string().email())),

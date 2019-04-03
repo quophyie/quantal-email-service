@@ -23,7 +23,7 @@ describe('Email Controller Tests', () => {
   })
   it('should send send an email given the template name', () => {
     emailServiceStub = sinon.stub(EmailService.prototype, 'sendEmailByTemplate').returnsPromise().resolves({status: true})
-    return supertest.post(`/email/template/test-template`)
+    return supertest.post(`/v1/email/template/test-template`)
       .send({to: 'test@yahoo.com'})
       .expect(200)
       .then((res) => {
@@ -34,7 +34,7 @@ describe('Email Controller Tests', () => {
 
   it('should send send an email given the template name', () => {
     emailServiceStub = sinon.stub(EmailService.prototype, 'sendEmail').returnsPromise().resolves({status: true})
-    return supertest.post(`/email/`)
+    return supertest.post(`/v1/email/`)
       .send({to: 'test@yahoo.com', from: 'from@yahoo.com', body: 'the body'})
       .expect(200)
       .then((res) => {
